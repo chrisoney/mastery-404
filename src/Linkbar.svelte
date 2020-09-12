@@ -14,6 +14,10 @@
     <span class="fas fa-smile link-icon"></span>
   </a>
   <div class="border-line"></div>
+  <a href={links[name].github}>
+    <span class="fab fa-github link-icon"></span>
+  </a>
+  <div class="border-line"></div>
   <a href={links[name].linkedin}>
     <span class="fab fa-linkedin link-icon"></span>
   </a>

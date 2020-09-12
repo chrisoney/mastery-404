@@ -36,6 +36,7 @@
 
 <svelte:head>
 	<link rel="stylesheet" href="reset.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a229c5b13d.js" crossorigin="anonymous"></script>
 </svelte:head>
 
@@ -51,7 +52,7 @@
 				{:else}
 					<div class="prof-top" on:click={(e) => switchName(e,i)}>
 						<span>{name}</span>
-						<img class="profile-pic" src="images/empty.png" alt=""/>
+						<img class="profile-pic" src="images/{names[i].toLowerCase().split(" ").join("-")}.png" alt=""/>
 					</div>
 				{/if}
 			{/each}
@@ -65,7 +66,7 @@
 			<img class="profile-pic big" src="images/{names[currName].toLowerCase().split(" ").join("-")}.png" alt=''/>
 			<p class="apology-title">{names[currName]}</p>
 			<p class="apology-body">
-				This is just taking up space right now
+				{links[names[currName]].description}
 			</p>
 		</div>
 	{:else}
@@ -83,6 +84,8 @@
 
 <style>
 	main {
+		font-family: 'Roboto', sans-serif;
+		font-weight: bolder;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -115,7 +118,7 @@
 		display:flex;
 		flex-direction: column;
 		align-items: center;
-		width: 110px;
+		width: 115px;
 		cursor: pointer;
 	}
 
@@ -127,7 +130,7 @@
 	}
 
 	.big {
-		width: 250px;
+		width: 200px;
 		border-radius: 50%;
 	}
 
@@ -138,7 +141,8 @@
 	}
 
 	.bottom {
-		width: 350px;
+		width: 400px;
+		margin-top: 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -151,7 +155,7 @@
 	}
 
 	.apology-title {
-		margin: none;
+		margin-top: 10px;
 		text-align: center;
 		color: black;
 		font-size: 24px;

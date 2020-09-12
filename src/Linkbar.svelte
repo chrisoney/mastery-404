@@ -13,14 +13,17 @@
   <a href={links[name].portfolio}>
     <span class="fas fa-smile link-icon"></span>
   </a>
+  <div class="border-line"></div>
   <a href={links[name].linkedin}>
     <span class="fab fa-linkedin link-icon"></span>
   </a>
+  <div class="border-line"></div>
   <a href={links[name].angellist}>
     <span class="fab fa-angellist link-icon"></span>
   </a>
+  <div class="border-line"></div>
   <a href='mailto:{links[name].portfolio}'>
-    <span class="fas fa-envelope link-icon"></span>
+    <span class="fas fa-envelope last link-icon"></span>
   </a>
 </div>
 
@@ -29,6 +32,7 @@
   .linkbar-container {
     width: 90%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     border-radius: 50px;
     border: 1px solid black;
@@ -38,6 +42,14 @@
     color: white;
     font-size: 50px;
     margin: 10px;
+    cursor: pointer;
+    padding-right: 75%;
+  }
+
+  .border-line {
+    width: 0.5px;
+    height: 80%;
+    background: black;
   }
 
 </style>

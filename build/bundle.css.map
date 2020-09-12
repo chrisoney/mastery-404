@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\t// export let name;\n</script>\n\n<main>\n\t<div class=\"top\">\n\t\t<p>hello</p>\n\t</div>\n\t<div class=\"bottom\">\n\n\t</div>\n</main>\n\n<style>\n\tmain {\n\t\ttop: 0;\n\t\tleft: 0;\n\t\tright: 0;\n\t\tbottom: 0;\n\t\twidth:100%;\n\t\theight: 100%;\n\t\tposition: absolute;\n\t\tbackground: rgb(146,191,67);\n\t\tbackground: linear-gradient(38deg, rgba(146,191,67,1) 40%, rgba(255,223,100,1) 100%);\n\t\tbackground-attachment: fixed;\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\talign-items: center;\n\t}\n\n\n\t@media (min-width: 640px) {\n\t\tmain {\n\t\t\tmax-width: none;\n\t\t}\n\t}\n</style>"
+  ],
+  "names": [],
+  "mappings": "AAcC,IAAI,cAAC,CAAC,AACL,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,CAAC,CACR,MAAM,CAAE,CAAC,CACT,MAAM,IAAI,CACV,MAAM,CAAE,IAAI,CACZ,QAAQ,CAAE,QAAQ,CAClB,UAAU,CAAE,IAAI,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,CAC3B,UAAU,CAAE,gBAAgB,KAAK,CAAC,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CACpF,qBAAqB,CAAE,KAAK,CAC5B,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,WAAW,CAAE,MAAM,AACpB,CAAC,AAGD,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AAC1B,IAAI,cAAC,CAAC,AACL,SAAS,CAAE,IAAI,AAChB,CAAC,AACF,CAAC"
+}

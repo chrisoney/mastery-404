@@ -31,7 +31,7 @@ const links = {
     'email': 'mailto:johnlamll916@gmail.com'
   }, 
   'Chris Oney': {
-    'description':'Software development is something I\'m very passionate about. Combining my programming skills and creativity is extremely fulfilling. <br /> When I\'m not coding the day away I enjoy tabletop games, reading, and learning new skills of all types.',
+    'description':'Software development is something I\'m very passionate about. Combining my programming skills and creativity is extremely fulfilling. <br> When I\'m not coding the day away I enjoy tabletop games, reading, and learning new skills of all types.',
     'portfolio': 'http://www.chrisoney.com',
     'github': 'https://github.com/chrisoney',
     'linkedin': 'https://www.linkedin.com/in/christopher-oney-317b84132/',

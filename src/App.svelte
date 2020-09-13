@@ -119,6 +119,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 115px;
+		text-align: center;
 		cursor: pointer;
 	}
 

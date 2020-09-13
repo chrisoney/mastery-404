@@ -1,2 +1,1555 @@
-var app=function(){"use strict";function t(){}const e=t=>t;function n(t){return t()}function o(){return Object.create(null)}function i(t){t.forEach(n)}function s(t){return"function"==typeof t}function l(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}const r="undefined"!=typeof window;let a=r?()=>window.performance.now():()=>Date.now(),c=r?t=>requestAnimationFrame(t):t;const u=new Set;function f(t){u.forEach(e=>{e.c(t)||(u.delete(e),e.f())}),0!==u.size&&c(f)}function d(t){let e;return 0===u.size&&c(f),{promise:new Promise(n=>{u.add(e={c:t,f:n})}),abort(){u.delete(e)}}}function m(t,e){t.appendChild(e)}function p(t,e,n){t.insertBefore(e,n||null)}function h(t){t.parentNode.removeChild(t)}function g(t){return document.createElement(t)}function y(t){return document.createTextNode(t)}function b(){return y(" ")}function v(t,e,n,o){return t.addEventListener(e,n,o),()=>t.removeEventListener(e,n,o)}function w(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}const $=new Set;let k,_=0;function q(t,e,n,o,i,s,l,r=0){const a=16.666/o;let c="{\n";for(let t=0;t<=1;t+=a){const o=e+(n-e)*s(t);c+=100*t+`%{${l(o,1-o)}}\n`}const u=c+`100% {${l(n,1-n)}}\n}`,f=`__svelte_${function(t){let e=5381,n=t.length;for(;n--;)e=(e<<5)-e^t.charCodeAt(n);return e>>>0}(u)}_${r}`,d=t.ownerDocument;$.add(d);const m=d.__svelte_stylesheet||(d.__svelte_stylesheet=d.head.appendChild(g("style")).sheet),p=d.__svelte_rules||(d.__svelte_rules={});p[f]||(p[f]=!0,m.insertRule(`@keyframes ${f} ${u}`,m.cssRules.length));const h=t.style.animation||"";return t.style.animation=`${h?h+", ":""}${f} ${o}ms linear ${i}ms 1 both`,_+=1,f}function x(t,e){const n=(t.style.animation||"").split(", "),o=n.filter(e?t=>t.indexOf(e)<0:t=>-1===t.indexOf("__svelte")),i=n.length-o.length;i&&(t.style.animation=o.join(", "),_-=i,_||c(()=>{_||($.forEach(t=>{const e=t.__svelte_stylesheet;let n=e.cssRules.length;for(;n--;)e.deleteRule(n);t.__svelte_rules={}}),$.clear())}))}function j(t){k=t}const C=[],E=[],I=[],S=[],R=Promise.resolve();let L=!1;function O(t){I.push(t)}let B=!1;const A=new Set;function J(){if(!B){B=!0;do{for(let t=0;t<C.length;t+=1){const e=C[t];j(e),M(e.$$)}for(j(null),C.length=0;E.length;)E.pop()();for(let t=0;t<I.length;t+=1){const e=I[t];A.has(e)||(A.add(e),e())}I.length=0}while(C.length);for(;S.length;)S.pop()();L=!1,B=!1,A.clear()}}function M(t){if(null!==t.fragment){t.update(),i(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(O)}}let T;function N(){return T||(T=Promise.resolve(),T.then(()=>{T=null})),T}function W(t,e,n){t.dispatchEvent(function(t,e){const n=document.createEvent("CustomEvent");return n.initCustomEvent(t,!1,!1,e),n}(`${e?"intro":"outro"}${n}`))}const z=new Set;let D;function F(t,e){t&&t.i&&(z.delete(t),t.i(e))}function H(t,e,n,o){if(t&&t.o){if(z.has(t))return;z.add(t),D.c.push(()=>{z.delete(t),o&&(n&&t.d(1),o())}),t.o(e)}}const P={duration:0};function G(n,o,i){let l,r,c=o(n,i),u=!1,f=0;function m(){l&&x(n,l)}function p(){const{delay:o=0,duration:i=300,easing:s=e,tick:p=t,css:h}=c||P;h&&(l=q(n,0,1,i,o,s,h,f++)),p(0,1);const g=a()+o,y=g+i;r&&r.abort(),u=!0,O(()=>W(n,!0,"start")),r=d(t=>{if(u){if(t>=y)return p(1,0),W(n,!0,"end"),m(),u=!1;if(t>=g){const e=s((t-g)/i);p(e,1-e)}}return u})}let h=!1;return{start(){h||(x(n),s(c)?(c=c(),N().then(p)):p())},invalidate(){h=!1},end(){u&&(m(),u=!1)}}}function Y(t,e,o){const{fragment:l,on_mount:r,on_destroy:a,after_update:c}=t.$$;l&&l.m(e,o),O(()=>{const e=r.map(n).filter(s);a?a.push(...e):i(e),t.$$.on_mount=[]}),c.forEach(O)}function K(t,e){const n=t.$$;null!==n.fragment&&(i(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function Q(t,e){-1===t.$$.dirty[0]&&(C.push(t),L||(L=!0,R.then(J)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function U(e,n,s,l,r,a,c=[-1]){const u=k;j(e);const f=n.props||{},d=e.$$={fragment:null,ctx:null,props:a,update:t,not_equal:r,bound:o(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(u?u.$$.context:[]),callbacks:o(),dirty:c,skip_bound:!1};let m=!1;if(d.ctx=s?s(e,f,(t,n,...o)=>{const i=o.length?o[0]:n;return d.ctx&&r(d.ctx[t],d.ctx[t]=i)&&(!d.skip_bound&&d.bound[t]&&d.bound[t](i),m&&Q(e,t)),n}):[],d.update(),m=!0,i(d.before_update),d.fragment=!!l&&l(d.ctx),n.target){if(n.hydrate){const t=function(t){return Array.from(t.childNodes)}(n.target);d.fragment&&d.fragment.l(t),t.forEach(h)}else d.fragment&&d.fragment.c();n.intro&&F(e.$$.fragment),Y(e,n.target,n.anchor),J()}j(u)}class V{$destroy(){K(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}const X={"Gilbert Bui":{description:"",portfolio:"",linkedin:"",angellist:"",email:""},"Marquis Bentley":{description:"I am a software engineer with expertise in JavaScript, React, Redux and Ruby on Rails. I love learning new technology and challenging myself to think both logically and creatively.  <br /> When I'm not programming I am likely playing basketball, reading a book or exploring my creativity through photography, music or writing!",portfolio:"https://www.marquisbentley.com/",github:"https://github.com/codedbyq",linkedin:"https://www.linkedin.com/in/marquisbentley/",angellist:"https://angel.co/u/marquisbentley",email:"mailto:marquisbentley@gmail.com"},"Julie Bock":{description:"",portfolio:"",linkedin:"",angellist:"",email:""},"John Lam":{description:"I'm an SF based Full-Stack Software Engineer with a passion for user-focused app development. I'm currently enjoying JavaScript and React, but have an affinity for all languages. I'm a problem solver! You can catch me searching for solutions with a coffee in hand. When I'm not programming (rarely), I'm running in the great outdoors while listening to a podcast, or doing yoga while listening to a podcast, or walking my dog while... you get the idea! I have a deep curiosity for learning and exploring new things. Reach out and lets grab some coffee!",portfolio:"https://jlamb916.github.io/",github:"https://github.com/jlamb916",linkedin:"https://www.linkedin.com/in/johnlam916/",angellist:"https://angel.co/u/john-lam-17",email:"mailto:johnlamll916@gmail.com"},"Chris Oney":{description:"Software development is something I'm very passionate about. Combining my programming skills and creativity is extremely fulfilling. <br /> When I'm not coding the day away I enjoy tabletop games, reading, and learning new skills of all types.",portfolio:"http://www.chrisoney.com",github:"https://github.com/chrisoney",linkedin:"https://www.linkedin.com/in/christopher-oney-317b84132/",angellist:"https://angel.co/u/christopher-oney",email:"mailto:christopher.oney@yahoo.com"}};function Z(t){const e=t-1;return e*e*e+1}function tt(t,{delay:e=0,duration:n=400,easing:o=Z,x:i=0,y:s=0,opacity:l=0}){const r=getComputedStyle(t),a=+r.opacity,c="none"===r.transform?"":r.transform,u=a*(1-l);return{delay:e,duration:n,easing:o,css:(t,e)=>`\n\t\t\ttransform: ${c} translate(${(1-t)*i}px, ${(1-t)*s}px);\n\t\t\topacity: ${a-u*e}`}}function et(n){let o,l,r,c,u,f,y,v,$,k,_,j,C,E,I,S,R,L,B,A,J,M,T,z,F,H,Y,K,Q,U,V;return{c(){o=g("div"),l=g("a"),r=g("span"),u=b(),f=g("div"),y=b(),v=g("a"),$=g("span"),_=b(),j=g("div"),C=b(),E=g("a"),I=g("span"),R=b(),L=g("div"),B=b(),A=g("a"),J=g("span"),T=b(),z=g("div"),F=b(),H=g("a"),Y=g("span"),w(r,"class","fas fa-smile link-icon svelte-152mwy2"),w(l,"href",c=X[n[0]].portfolio),w(f,"class","border-line svelte-152mwy2"),w($,"class","fab fa-github link-icon svelte-152mwy2"),w(v,"href",k=X[n[0]].github),w(j,"class","border-line svelte-152mwy2"),w(I,"class","fab fa-linkedin link-icon svelte-152mwy2"),w(E,"href",S=X[n[0]].linkedin),w(L,"class","border-line svelte-152mwy2"),w(J,"class","fab fa-angellist link-icon svelte-152mwy2"),w(A,"href",M=X[n[0]].angellist),w(z,"class","border-line svelte-152mwy2"),w(Y,"class","fas fa-envelope last link-icon svelte-152mwy2"),w(H,"href",K=X[n[0]].email),w(o,"class","linkbar-container svelte-152mwy2")},m(t,e){p(t,o,e),m(o,l),m(l,r),m(o,u),m(o,f),m(o,y),m(o,v),m(v,$),m(o,_),m(o,j),m(o,C),m(o,E),m(E,I),m(o,R),m(o,L),m(o,B),m(o,A),m(A,J),m(o,T),m(o,z),m(o,F),m(o,H),m(H,Y),V=!0},p(t,[e]){(!V||1&e&&c!==(c=X[t[0]].portfolio))&&w(l,"href",c),(!V||1&e&&k!==(k=X[t[0]].github))&&w(v,"href",k),(!V||1&e&&S!==(S=X[t[0]].linkedin))&&w(E,"href",S),(!V||1&e&&M!==(M=X[t[0]].angellist))&&w(A,"href",M),(!V||1&e&&K!==(K=X[t[0]].email))&&w(H,"href",K)},i(t){V||(O(()=>{U&&U.end(1),Q||(Q=G(o,tt,{x:-100,duration:400})),Q.start()}),V=!0)},o(n){Q&&Q.invalidate(),U=function(n,o,l){let r,c=o(n,l),u=!0;const f=D;function m(){const{delay:o=0,duration:s=300,easing:l=e,tick:m=t,css:p}=c||P;p&&(r=q(n,1,0,s,o,l,p));const h=a()+o,g=h+s;O(()=>W(n,!1,"start")),d(t=>{if(u){if(t>=g)return m(0,1),W(n,!1,"end"),--f.r||i(f.c),!1;if(t>=h){const e=l((t-h)/s);m(1-e,e)}}return u})}return f.r+=1,s(c)?N().then(()=>{c=c(),m()}):m(),{end(t){t&&c.tick&&c.tick(1,0),u&&(r&&x(n,r),u=!1)}}}(o,tt,{x:100,duration:400}),V=!1},d(t){t&&h(o),t&&U&&U.end()}}}function nt(t,e,n){let{name:o}=e;return t.$$set=t=>{"name"in t&&n(0,o=t.name)},[o]}class ot extends V{constructor(t){super(),U(this,t,nt,et,l,{name:0})}}function it(t,e,n){const o=t.slice();return o[5]=e[n],o[7]=n,o}function st(t){let e,n,o,i,s,l,r,a,c,u=t[5]+"";function f(...e){return t[4](t[7],...e)}return{c(){e=g("div"),n=g("span"),o=y(u),i=b(),s=g("img"),r=b(),w(s,"class","profile-pic svelte-1a8qftq"),s.src!==(l="images/"+t[1][t[7]].toLowerCase().split(" ").join("-")+".png")&&w(s,"src",l),w(s,"alt",""),w(e,"class","prof-top svelte-1a8qftq")},m(t,l){p(t,e,l),m(e,n),m(n,o),m(e,i),m(e,s),m(e,r),a||(c=v(e,"click",f),a=!0)},p(e,n){t=e},d(t){t&&h(e),a=!1,c()}}}function lt(t){let e,n,o,i,s,l,r,a,c,u=t[5]+"";function f(...e){return t[3](t[7],...e)}return{c(){e=g("div"),n=g("span"),o=y(u),i=b(),s=g("img"),r=b(),w(s,"class","profile-pic selected svelte-1a8qftq"),s.src!==(l="images/close.png")&&w(s,"src","images/close.png"),w(s,"alt",""),w(e,"class","prof-top svelte-1a8qftq")},m(t,l){p(t,e,l),m(e,n),m(n,o),m(e,i),m(e,s),m(e,r),a||(c=v(e,"click",f),a=!0)},p(e,n){t=e},d(t){t&&h(e),a=!1,c()}}}function rt(t){let e;function n(t,e){return t[0]===t[7]?lt:st}let o=n(t),i=o(t);return{c(){i.c(),e=y("")},m(t,n){i.m(t,n),p(t,e,n)},p(t,s){o===(o=n(t))&&i?i.p(t,s):(i.d(1),i=o(t),i&&(i.c(),i.m(e.parentNode,e)))},d(t){i.d(t),t&&h(e)}}}function at(t){let e,n;return e=new ot({props:{name:t[1][t[0]]}}),{c(){var t;(t=e.$$.fragment)&&t.c()},m(t,o){Y(e,t,o),n=!0},p(t,n){const o={};1&n&&(o.name=t[1][t[0]]),e.$set(o)},i(t){n||(F(e.$$.fragment,t),n=!0)},o(t){H(e.$$.fragment,t),n=!1},d(t){K(e,t)}}}function ct(e){let n,o;return{c(){n=g("div"),n.innerHTML='<img class="clock svelte-1a8qftq" src="images/broken-clock.png" alt=""/> \n\t\t\t<p class="apology-title svelte-1a8qftq">Oops, something&#39;s gone wrong</p> \n\t\t\t<p class="apology-body svelte-1a8qftq">This site uses free dynos, so we may have hit the limit for the month on this project.\n\t\t\t\tWe apologize for the inconvenience, and hope you&#39;ll be able to see it soon!\n\t\t\t\tIn the meantime, why don&#39;t you take a look at some of the links up above?</p>',w(n,"class","bottom svelte-1a8qftq")},m(t,e){p(t,n,e)},p:t,i(t){o||O(()=>{o=G(n,dt,{}),o.start()})},o:t,d(t){t&&h(n)}}}function ut(e){let n,o,i,s,l,r,a,c,u,f=e[1][e[0]]+"",d=X[e[1][e[0]]].description+"";return{c(){n=g("div"),o=g("img"),s=b(),l=g("p"),r=y(f),a=b(),c=g("p"),w(o,"class","profile-pic big svelte-1a8qftq"),o.src!==(i="images/"+e[1][e[0]].toLowerCase().split(" ").join("-")+".png")&&w(o,"src",i),w(o,"alt",""),w(l,"class","apology-title svelte-1a8qftq"),w(c,"class","apology-body svelte-1a8qftq"),w(n,"class","bottom svelte-1a8qftq")},m(t,e){p(t,n,e),m(n,o),m(n,s),m(n,l),m(l,r),m(n,a),m(n,c),c.innerHTML=d},p(t,e){1&e&&o.src!==(i="images/"+t[1][t[0]].toLowerCase().split(" ").join("-")+".png")&&w(o,"src",i),1&e&&f!==(f=t[1][t[0]]+"")&&function(t,e){e=""+e,t.wholeText!==e&&(t.data=e)}(r,f),1&e&&d!==(d=X[t[1][t[0]]].description+"")&&(c.innerHTML=d)},i(t){u||O(()=>{u=G(n,dt,{}),u.start()})},o:t,d(t){t&&h(n)}}}function ft(t){let e,n,o,s,l,r,a,c,u,f,d,y=t[1],v=[];for(let e=0;e<y.length;e+=1)v[e]=rt(it(t,y,e));let $=t[0]>-1&&at(t);function k(t,e){return t[0]>-1?ut:ct}let _=k(t),q=_(t);return{c(){e=g("link"),n=g("link"),o=g("script"),l=b(),r=g("main"),a=g("div"),c=g("div");for(let t=0;t<v.length;t+=1)v[t].c();u=b(),$&&$.c(),f=b(),q.c(),w(e,"rel","stylesheet"),w(e,"href","reset.css"),w(n,"href","https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"),w(n,"rel","stylesheet"),o.src!==(s="https://kit.fontawesome.com/a229c5b13d.js")&&w(o,"src","https://kit.fontawesome.com/a229c5b13d.js"),w(o,"crossorigin","anonymous"),w(c,"class","header-links svelte-1a8qftq"),w(a,"class","top svelte-1a8qftq"),w(r,"class","svelte-1a8qftq")},m(t,i){m(document.head,e),m(document.head,n),m(document.head,o),p(t,l,i),p(t,r,i),m(r,a),m(a,c);for(let t=0;t<v.length;t+=1)v[t].m(c,null);m(a,u),$&&$.m(a,null),m(r,f),q.m(r,null),d=!0},p(t,[e]){if(7&e){let n;for(y=t[1],n=0;n<y.length;n+=1){const o=it(t,y,n);v[n]?v[n].p(o,e):(v[n]=rt(o),v[n].c(),v[n].m(c,null))}for(;n<v.length;n+=1)v[n].d(1);v.length=y.length}t[0]>-1?$?($.p(t,e),1&e&&F($,1)):($=at(t),$.c(),F($,1),$.m(a,null)):$&&(D={r:0,c:[],p:D},H($,1,1,()=>{$=null}),D.r||i(D.c),D=D.p),_===(_=k(t))&&q?q.p(t,e):(q.d(1),q=_(t),q&&(q.c(),F(q,1),q.m(r,null)))},i(t){d||(F($),F(q),d=!0)},o(t){H($),d=!1},d(t){h(e),h(n),h(o),t&&h(l),t&&h(r),function(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}(v,t),$&&$.d(),q.d()}}}function dt(t,{delay:e=400,duration:n=400}){const o=+getComputedStyle(t).opacity;return{delay:e,duration:n,css:t=>"opacity: "+t*o}}function mt(t,e,n){let o=-1;function i(t,e){t.preventDefault(),n(0,o=o===e?-1:e)}console.log(o);return[o,["Gilbert Bui","Marquis Bentley","Julie Bock","John Lam","Chris Oney"],i,(t,e)=>i(e,t),(t,e)=>i(e,t)]}return new class extends V{constructor(t){super(),U(this,t,mt,ft,l,{})}}({target:document.body})}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = node.ownerDocument;
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = doc.head.appendChild(element('style')).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ``}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    let flushing = false;
+    const seen_callbacks = new Set();
+    function flush() {
+        if (flushing)
+            return;
+        flushing = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components.length; i += 1) {
+                const component = dirty_components[i];
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        flushing = false;
+        seen_callbacks.clear();
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_in_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = false;
+        let animation_name;
+        let task;
+        let uid = 0;
+        function cleanup() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 0, 1, duration, delay, easing, css, uid++);
+            tick(0, 1);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            if (task)
+                task.abort();
+            running = true;
+            add_render_callback(() => dispatch(node, true, 'start'));
+            task = loop(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(1, 0);
+                        dispatch(node, true, 'end');
+                        cleanup();
+                        return running = false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(t, 1 - t);
+                    }
+                }
+                return running;
+            });
+        }
+        let started = false;
+        return {
+            start() {
+                if (started)
+                    return;
+                delete_rule(node);
+                if (is_function(config)) {
+                    config = config();
+                    wait().then(go);
+                }
+                else {
+                    go();
+                }
+            },
+            invalidate() {
+                started = false;
+            },
+            end() {
+                if (running) {
+                    cleanup();
+                    running = false;
+                }
+            }
+        };
+    }
+    function create_out_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = true;
+        let animation_name;
+        const group = outros;
+        group.r += 1;
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 1, 0, duration, delay, easing, css);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            add_render_callback(() => dispatch(node, false, 'start'));
+            loop(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(0, 1);
+                        dispatch(node, false, 'end');
+                        if (!--group.r) {
+                            // this will result in `end()` being called,
+                            // so we don't need to clean up here
+                            run_all(group.c);
+                        }
+                        return false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(1 - t, t);
+                    }
+                }
+                return running;
+            });
+        }
+        if (is_function(config)) {
+            wait().then(() => {
+                // @ts-ignore
+                config = config();
+                go();
+            });
+        }
+        else {
+            go();
+        }
+        return {
+            end(reset) {
+                if (reset && config.tick) {
+                    config.tick(1, 0);
+                }
+                if (running) {
+                    if (animation_name)
+                        delete_rule(node, animation_name);
+                    running = false;
+                }
+            }
+        };
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const prop_values = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, prop_values, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.25.0' }, detail)));
+    }
+    function append_dev(target, node) {
+        dispatch_dev("SvelteDOMInsert", { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev("SvelteDOMInsert", { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev("SvelteDOMRemove", { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev("SvelteDOMAddEventListener", { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev("SvelteDOMRemoveEventListener", { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+        else
+            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev("SvelteDOMSetData", { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error(`'target' is a required option`);
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    const links = {
+      'Gilbert Bui': {
+        'description':'',
+        'portfolio': '',
+        'linkedin': '',
+        'angellist': '',
+        'email': ''
+      }, 
+      'Marquis Bentley': {
+        'description':'I am a software engineer with expertise in JavaScript, React, Redux and Ruby on Rails. I love learning new technology and challenging myself to think both logically and creatively.  <br /> When I\'m not programming I am likely playing basketball, reading a book or exploring my creativity through photography, music or writing!',
+        'portfolio': 'https://www.marquisbentley.com/',
+        'github': 'https://github.com/codedbyq',
+        'linkedin': 'https://www.linkedin.com/in/marquisbentley/',
+        'angellist': 'https://angel.co/u/marquisbentley',
+        'email': 'mailto:marquisbentley@gmail.com'
+
+      }, 
+      'Julie Bock': {
+        'description':'',
+        'portfolio': '',
+        'linkedin': '',
+        'angellist': '',
+        'email': ''
+      }, 
+      'John Lam': {
+        'description':'I\'m an SF based Full-Stack Software Engineer with a passion for user-focused app development. I\'m currently enjoying JavaScript and React, but have an affinity for all languages. I\'m a problem solver! You can catch me searching for solutions with a coffee in hand. When I\'m not programming (rarely), I\'m running in the great outdoors while listening to a podcast, or doing yoga while listening to a podcast, or walking my dog while... you get the idea! I have a deep curiosity for learning and exploring new things. Reach out and lets grab some coffee!',
+        'portfolio': 'https://jlamb916.github.io/',
+        'github': 'https://github.com/jlamb916',
+        'linkedin': 'https://www.linkedin.com/in/johnlam916/',
+        'angellist': 'https://angel.co/u/john-lam-17',
+        'email': 'mailto:johnlamll916@gmail.com'
+      }, 
+      'Chris Oney': {
+        'description':`Software development is something I\'m very passionate about. Combining my programming skills and creativity is extremely fulfilling. <br> When I\'m not coding the day away I enjoy tabletop games, reading, and learning new skills of all types.`,
+        'portfolio': 'http://www.chrisoney.com',
+        'github': 'https://github.com/chrisoney',
+        'linkedin': 'https://www.linkedin.com/in/christopher-oney-317b84132/',
+        'angellist': 'https://angel.co/u/christopher-oney',
+        'email': 'mailto:christopher.oney@yahoo.com'
+      }, 
+    };
+
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function fly(node, { delay = 0, duration = 400, easing = cubicOut, x = 0, y = 0, opacity = 0 }) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (t, u) => `
+			transform: ${transform} translate(${(1 - t) * x}px, ${(1 - t) * y}px);
+			opacity: ${target_opacity - (od * u)}`
+        };
+    }
+
+    /* src/Linkbar.svelte generated by Svelte v3.25.0 */
+    const file = "src/Linkbar.svelte";
+
+    function create_fragment(ctx) {
+    	let div4;
+    	let a0;
+    	let span0;
+    	let a0_href_value;
+    	let t0;
+    	let div0;
+    	let t1;
+    	let a1;
+    	let span1;
+    	let a1_href_value;
+    	let t2;
+    	let div1;
+    	let t3;
+    	let a2;
+    	let span2;
+    	let a2_href_value;
+    	let t4;
+    	let div2;
+    	let t5;
+    	let a3;
+    	let span3;
+    	let a3_href_value;
+    	let t6;
+    	let div3;
+    	let t7;
+    	let a4;
+    	let span4;
+    	let a4_href_value;
+    	let div4_intro;
+    	let div4_outro;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			div4 = element("div");
+    			a0 = element("a");
+    			span0 = element("span");
+    			t0 = space();
+    			div0 = element("div");
+    			t1 = space();
+    			a1 = element("a");
+    			span1 = element("span");
+    			t2 = space();
+    			div1 = element("div");
+    			t3 = space();
+    			a2 = element("a");
+    			span2 = element("span");
+    			t4 = space();
+    			div2 = element("div");
+    			t5 = space();
+    			a3 = element("a");
+    			span3 = element("span");
+    			t6 = space();
+    			div3 = element("div");
+    			t7 = space();
+    			a4 = element("a");
+    			span4 = element("span");
+    			attr_dev(span0, "class", "fas fa-smile link-icon svelte-152mwy2");
+    			add_location(span0, file, 13, 4, 261);
+    			attr_dev(a0, "href", a0_href_value = links[/*name*/ ctx[0]].portfolio);
+    			add_location(a0, file, 12, 2, 224);
+    			attr_dev(div0, "class", "border-line svelte-152mwy2");
+    			add_location(div0, file, 15, 2, 315);
+    			attr_dev(span1, "class", "fab fa-github link-icon svelte-152mwy2");
+    			add_location(span1, file, 17, 4, 383);
+    			attr_dev(a1, "href", a1_href_value = links[/*name*/ ctx[0]].github);
+    			add_location(a1, file, 16, 2, 349);
+    			attr_dev(div1, "class", "border-line svelte-152mwy2");
+    			add_location(div1, file, 19, 2, 438);
+    			attr_dev(span2, "class", "fab fa-linkedin link-icon svelte-152mwy2");
+    			add_location(span2, file, 21, 4, 508);
+    			attr_dev(a2, "href", a2_href_value = links[/*name*/ ctx[0]].linkedin);
+    			add_location(a2, file, 20, 2, 472);
+    			attr_dev(div2, "class", "border-line svelte-152mwy2");
+    			add_location(div2, file, 23, 2, 565);
+    			attr_dev(span3, "class", "fab fa-angellist link-icon svelte-152mwy2");
+    			add_location(span3, file, 25, 4, 636);
+    			attr_dev(a3, "href", a3_href_value = links[/*name*/ ctx[0]].angellist);
+    			add_location(a3, file, 24, 2, 599);
+    			attr_dev(div3, "class", "border-line svelte-152mwy2");
+    			add_location(div3, file, 27, 2, 694);
+    			attr_dev(span4, "class", "fas fa-envelope last link-icon svelte-152mwy2");
+    			add_location(span4, file, 29, 4, 763);
+    			attr_dev(a4, "href", a4_href_value = links[/*name*/ ctx[0]].email);
+    			add_location(a4, file, 28, 2, 728);
+    			attr_dev(div4, "class", "linkbar-container svelte-152mwy2");
+    			add_location(div4, file, 8, 0, 113);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, a0);
+    			append_dev(a0, span0);
+    			append_dev(div4, t0);
+    			append_dev(div4, div0);
+    			append_dev(div4, t1);
+    			append_dev(div4, a1);
+    			append_dev(a1, span1);
+    			append_dev(div4, t2);
+    			append_dev(div4, div1);
+    			append_dev(div4, t3);
+    			append_dev(div4, a2);
+    			append_dev(a2, span2);
+    			append_dev(div4, t4);
+    			append_dev(div4, div2);
+    			append_dev(div4, t5);
+    			append_dev(div4, a3);
+    			append_dev(a3, span3);
+    			append_dev(div4, t6);
+    			append_dev(div4, div3);
+    			append_dev(div4, t7);
+    			append_dev(div4, a4);
+    			append_dev(a4, span4);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (!current || dirty & /*name*/ 1 && a0_href_value !== (a0_href_value = links[/*name*/ ctx[0]].portfolio)) {
+    				attr_dev(a0, "href", a0_href_value);
+    			}
+
+    			if (!current || dirty & /*name*/ 1 && a1_href_value !== (a1_href_value = links[/*name*/ ctx[0]].github)) {
+    				attr_dev(a1, "href", a1_href_value);
+    			}
+
+    			if (!current || dirty & /*name*/ 1 && a2_href_value !== (a2_href_value = links[/*name*/ ctx[0]].linkedin)) {
+    				attr_dev(a2, "href", a2_href_value);
+    			}
+
+    			if (!current || dirty & /*name*/ 1 && a3_href_value !== (a3_href_value = links[/*name*/ ctx[0]].angellist)) {
+    				attr_dev(a3, "href", a3_href_value);
+    			}
+
+    			if (!current || dirty & /*name*/ 1 && a4_href_value !== (a4_href_value = links[/*name*/ ctx[0]].email)) {
+    				attr_dev(a4, "href", a4_href_value);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (div4_outro) div4_outro.end(1);
+    				if (!div4_intro) div4_intro = create_in_transition(div4, fly, { x: -100, duration: 400 });
+    				div4_intro.start();
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (div4_intro) div4_intro.invalidate();
+    			div4_outro = create_out_transition(div4, fly, { x: 100, duration: 400 });
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div4);
+    			if (detaching && div4_outro) div4_outro.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Linkbar", slots, []);
+    	let { name } = $$props;
+    	const writable_props = ["name"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Linkbar> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
+    	};
+
+    	$$self.$capture_state = () => ({ fly, links, name });
+
+    	$$self.$inject_state = $$props => {
+    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [name];
+    }
+
+    class Linkbar extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, { name: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Linkbar",
+    			options,
+    			id: create_fragment.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*name*/ ctx[0] === undefined && !("name" in props)) {
+    			console.warn("<Linkbar> was created without expected prop 'name'");
+    		}
+    	}
+
+    	get name() {
+    		throw new Error("<Linkbar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set name(value) {
+    		throw new Error("<Linkbar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.25.0 */
+
+    const { console: console_1 } = globals;
+    const file$1 = "src/App.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[5] = list[i];
+    	child_ctx[7] = i;
+    	return child_ctx;
+    }
+
+    // (52:4) {:else}
+    function create_else_block_1(ctx) {
+    	let div;
+    	let span;
+    	let t0_value = /*name*/ ctx[5] + "";
+    	let t0;
+    	let t1;
+    	let img;
+    	let img_src_value;
+    	let t2;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler_1(...args) {
+    		return /*click_handler_1*/ ctx[4](/*i*/ ctx[7], ...args);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			img = element("img");
+    			t2 = space();
+    			add_location(span, file$1, 53, 6, 1223);
+    			attr_dev(img, "class", "profile-pic svelte-1a8qftq");
+    			if (img.src !== (img_src_value = "images/" + /*names*/ ctx[1][/*i*/ ctx[7]].toLowerCase().split(" ").join("-") + ".png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			add_location(img, file$1, 54, 6, 1249);
+    			attr_dev(div, "class", "prof-top svelte-1a8qftq");
+    			add_location(div, file$1, 52, 5, 1160);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span);
+    			append_dev(span, t0);
+    			append_dev(div, t1);
+    			append_dev(div, img);
+    			append_dev(div, t2);
+
+    			if (!mounted) {
+    				dispose = listen_dev(div, "click", click_handler_1, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block_1.name,
+    		type: "else",
+    		source: "(52:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (47:4) {#if currName === i}
+    function create_if_block_2(ctx) {
+    	let div;
+    	let span;
+    	let t0_value = /*name*/ ctx[5] + "";
+    	let t0;
+    	let t1;
+    	let img;
+    	let img_src_value;
+    	let t2;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler(...args) {
+    		return /*click_handler*/ ctx[3](/*i*/ ctx[7], ...args);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			img = element("img");
+    			t2 = space();
+    			add_location(span, file$1, 48, 6, 1039);
+    			attr_dev(img, "class", "profile-pic selected svelte-1a8qftq");
+    			if (img.src !== (img_src_value = "images/close.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			add_location(img, file$1, 49, 6, 1065);
+    			attr_dev(div, "class", "prof-top svelte-1a8qftq");
+    			add_location(div, file$1, 47, 5, 976);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span);
+    			append_dev(span, t0);
+    			append_dev(div, t1);
+    			append_dev(div, img);
+    			append_dev(div, t2);
+
+    			if (!mounted) {
+    				dispose = listen_dev(div, "click", click_handler, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(47:4) {#if currName === i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (46:3) {#each names as name, i}
+    function create_each_block(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*currName*/ ctx[0] === /*i*/ ctx[7]) return create_if_block_2;
+    		return create_else_block_1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(46:3) {#each names as name, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (60:2) {#if currName > -1}
+    function create_if_block_1(ctx) {
+    	let linkbar;
+    	let current;
+
+    	linkbar = new Linkbar({
+    			props: {
+    				name: /*names*/ ctx[1][/*currName*/ ctx[0]]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(linkbar.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(linkbar, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const linkbar_changes = {};
+    			if (dirty & /*currName*/ 1) linkbar_changes.name = /*names*/ ctx[1][/*currName*/ ctx[0]];
+    			linkbar.$set(linkbar_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(linkbar.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(linkbar.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(linkbar, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(60:2) {#if currName > -1}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (72:1) {:else}
+    function create_else_block(ctx) {
+    	let div;
+    	let img;
+    	let img_src_value;
+    	let t0;
+    	let p0;
+    	let t2;
+    	let p1;
+    	let div_intro;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img = element("img");
+    			t0 = space();
+    			p0 = element("p");
+    			p0.textContent = "Oops, something's gone wrong";
+    			t2 = space();
+    			p1 = element("p");
+    			p1.textContent = "This site uses free dynos, so we may have hit the limit for the month on this project.\n\t\t\t\tWe apologize for the inconvenience, and hope you'll be able to see it soon!\n\t\t\t\tIn the meantime, why don't you take a look at some of the links up above?";
+    			attr_dev(img, "class", "clock svelte-1a8qftq");
+    			if (img.src !== (img_src_value = "images/broken-clock.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			add_location(img, file$1, 73, 3, 1812);
+    			attr_dev(p0, "class", "apology-title svelte-1a8qftq");
+    			add_location(p0, file$1, 74, 3, 1874);
+    			attr_dev(p1, "class", "apology-body svelte-1a8qftq");
+    			add_location(p1, file$1, 75, 3, 1935);
+    			attr_dev(div, "class", "bottom svelte-1a8qftq");
+    			add_location(div, file$1, 72, 2, 1780);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
+    			append_dev(div, t0);
+    			append_dev(div, p0);
+    			append_dev(div, t2);
+    			append_dev(div, p1);
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (!div_intro) {
+    				add_render_callback(() => {
+    					div_intro = create_in_transition(div, fade, {});
+    					div_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(72:1) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (64:1) {#if currName > -1}
+    function create_if_block(ctx) {
+    	let div;
+    	let img;
+    	let img_src_value;
+    	let t0;
+    	let p0;
+    	let t1_value = /*names*/ ctx[1][/*currName*/ ctx[0]] + "";
+    	let t1;
+    	let t2;
+    	let p1;
+    	let raw_value = links[/*names*/ ctx[1][/*currName*/ ctx[0]]].description + "";
+    	let div_intro;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img = element("img");
+    			t0 = space();
+    			p0 = element("p");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			p1 = element("p");
+    			attr_dev(img, "class", "profile-pic big svelte-1a8qftq");
+    			if (img.src !== (img_src_value = "images/" + /*names*/ ctx[1][/*currName*/ ctx[0]].toLowerCase().split(" ").join("-") + ".png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			add_location(img, file$1, 65, 3, 1519);
+    			attr_dev(p0, "class", "apology-title svelte-1a8qftq");
+    			add_location(p0, file$1, 66, 3, 1630);
+    			attr_dev(p1, "class", "apology-body svelte-1a8qftq");
+    			add_location(p1, file$1, 67, 3, 1680);
+    			attr_dev(div, "class", "bottom svelte-1a8qftq");
+    			add_location(div, file$1, 64, 2, 1487);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
+    			append_dev(div, t0);
+    			append_dev(div, p0);
+    			append_dev(p0, t1);
+    			append_dev(div, t2);
+    			append_dev(div, p1);
+    			p1.innerHTML = raw_value;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*currName*/ 1 && img.src !== (img_src_value = "images/" + /*names*/ ctx[1][/*currName*/ ctx[0]].toLowerCase().split(" ").join("-") + ".png")) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
+    			if (dirty & /*currName*/ 1 && t1_value !== (t1_value = /*names*/ ctx[1][/*currName*/ ctx[0]] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*currName*/ 1 && raw_value !== (raw_value = links[/*names*/ ctx[1][/*currName*/ ctx[0]]].description + "")) p1.innerHTML = raw_value;		},
+    		i: function intro(local) {
+    			if (!div_intro) {
+    				add_render_callback(() => {
+    					div_intro = create_in_transition(div, fade, {});
+    					div_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(64:1) {#if currName > -1}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	let link0;
+    	let link1;
+    	let script;
+    	let script_src_value;
+    	let t0;
+    	let main;
+    	let div1;
+    	let div0;
+    	let t1;
+    	let t2;
+    	let current;
+    	let each_value = /*names*/ ctx[1];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	let if_block0 = /*currName*/ ctx[0] > -1 && create_if_block_1(ctx);
+
+    	function select_block_type_1(ctx, dirty) {
+    		if (/*currName*/ ctx[0] > -1) return create_if_block;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type_1(ctx);
+    	let if_block1 = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			link0 = element("link");
+    			link1 = element("link");
+    			script = element("script");
+    			t0 = space();
+    			main = element("main");
+    			div1 = element("div");
+    			div0 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t1 = space();
+    			if (if_block0) if_block0.c();
+    			t2 = space();
+    			if_block1.c();
+    			attr_dev(link0, "rel", "stylesheet");
+    			attr_dev(link0, "href", "reset.css");
+    			add_location(link0, file$1, 37, 1, 613);
+    			attr_dev(link1, "href", "https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+    			attr_dev(link1, "rel", "stylesheet");
+    			add_location(link1, file$1, 38, 1, 655);
+    			if (script.src !== (script_src_value = "https://kit.fontawesome.com/a229c5b13d.js")) attr_dev(script, "src", script_src_value);
+    			attr_dev(script, "crossorigin", "anonymous");
+    			add_location(script, file$1, 39, 1, 757);
+    			attr_dev(div0, "class", "header-links svelte-1a8qftq");
+    			add_location(div0, file$1, 44, 2, 891);
+    			attr_dev(div1, "class", "top svelte-1a8qftq");
+    			add_location(div1, file$1, 43, 1, 871);
+    			attr_dev(main, "class", "svelte-1a8qftq");
+    			add_location(main, file$1, 42, 0, 863);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			append_dev(document.head, link0);
+    			append_dev(document.head, link1);
+    			append_dev(document.head, script);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, main, anchor);
+    			append_dev(main, div1);
+    			append_dev(div1, div0);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div0, null);
+    			}
+
+    			append_dev(div1, t1);
+    			if (if_block0) if_block0.m(div1, null);
+    			append_dev(main, t2);
+    			if_block1.m(main, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*switchName, names, currName*/ 7) {
+    				each_value = /*names*/ ctx[1];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div0, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (/*currName*/ ctx[0] > -1) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+
+    					if (dirty & /*currName*/ 1) {
+    						transition_in(if_block0, 1);
+    					}
+    				} else {
+    					if_block0 = create_if_block_1(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(div1, null);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (current_block_type === (current_block_type = select_block_type_1(ctx)) && if_block1) {
+    				if_block1.p(ctx, dirty);
+    			} else {
+    				if_block1.d(1);
+    				if_block1 = current_block_type(ctx);
+
+    				if (if_block1) {
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(main, null);
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			detach_dev(link0);
+    			detach_dev(link1);
+    			detach_dev(script);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(main);
+    			destroy_each(each_blocks, detaching);
+    			if (if_block0) if_block0.d();
+    			if_block1.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function fade(node, { delay = 400, duration = 400 }) {
+    	const o = +getComputedStyle(node).opacity;
+
+    	return {
+    		delay,
+    		duration,
+    		css: t => `opacity: ${t * o}`
+    	};
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("App", slots, []);
+    	let currName = -1;
+    	let names = ["Gilbert Bui", "Marquis Bentley", "Julie Bock", "John Lam", "Chris Oney"];
+    	console.log(currName);
+
+    	function switchName(e, index) {
+    		e.preventDefault();
+
+    		if (currName === index) {
+    			$$invalidate(0, currName = -1);
+    		} else {
+    			$$invalidate(0, currName = index);
+    		}
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = (i, e) => switchName(e, i);
+    	const click_handler_1 = (i, e) => switchName(e, i);
+
+    	$$self.$capture_state = () => ({
+    		links,
+    		Linkbar,
+    		fade,
+    		currName,
+    		names,
+    		switchName
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("currName" in $$props) $$invalidate(0, currName = $$props.currName);
+    		if ("names" in $$props) $$invalidate(1, names = $$props.names);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [currName, names, switchName, click_handler, click_handler_1];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment$1.name
+    		});
+    	}
+    }
+
+    const app = new App({
+    	target: document.body
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map

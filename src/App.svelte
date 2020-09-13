@@ -66,7 +66,7 @@
 			<img class="profile-pic big" src="images/{names[currName].toLowerCase().split(" ").join("-")}.png" alt=''/>
 			<p class="apology-title">{names[currName]}</p>
 			<p class="apology-body">
-				{links[names[currName]].description}
+				{@html links[names[currName]].description}
 			</p>
 		</div>
 	{:else}

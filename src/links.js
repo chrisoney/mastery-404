@@ -7,11 +7,12 @@ const links = {
     'email': ''
   }, 
   'Marquis Bentley': {
-    'description':'',
-    'portfolio': '',
-    'linkedin': '',
-    'angellist': '',
-    'email': ''
+    'description':'I am a software engineer with expertise in JavaScript, React, Redux and Ruby on Rails. I love learning new technology and challenging myself to think both logically and creatively.  When I\'m not programming I am likely playing basketball, reading a book or exploring my creativity through photography, music or writing!',
+    'portfolio': 'https://www.marquisbentley.com/',
+    'github': 'https://github.com/codedbyq',
+    'linkedin': 'https://www.linkedin.com/in/marquisbentley/',
+    'angellist': 'https://angel.co/u/marquisbentley',
+    'email': 'mailto:marquisbentley@gmail.com'
 
   }, 
   'Julie Bock': {

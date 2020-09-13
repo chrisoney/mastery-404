@@ -141,7 +141,7 @@
 	}
 
 	.bottom {
-		width: 400px;
+		width: 600px;
 		margin-top: 10px;
 		display: flex;
 		flex-direction: column;

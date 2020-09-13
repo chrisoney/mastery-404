@@ -7,7 +7,7 @@
 
 
 <div class="linkbar-container"
-  in:fly={{ x: 100, duration: 400 }}
+  in:fly={{ x: -100, duration: 400 }}
   out:fly={{ x: 100, duration: 400 }}
 >
   <a href={links[name].portfolio}>
@@ -26,7 +26,7 @@
     <span class="fab fa-angellist link-icon"></span>
   </a>
   <div class="border-line"></div>
-  <a href='mailto:{links[name].portfolio}'>
+  <a href='{links[name].email}'>
     <span class="fas fa-envelope last link-icon"></span>
   </a>
 </div>

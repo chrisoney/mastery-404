@@ -11,7 +11,7 @@
   out:fly={{ x: 100, duration: 400 }}
 >
   <a href={links[name].portfolio}>
-    <span class="fas fa-smile link-icon"></span>
+    <span class="fas fa-portrait link-icon"></span>
   </a>
   <div class="border-line"></div>
   <a href={links[name].github}>
